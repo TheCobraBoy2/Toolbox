@@ -1,11 +1,11 @@
 import customtkinter
 
-import patchers
+import applications
 import generic
 
-p = patchers.TestPatcher()
+app = applications.TestApp()
 
-class PatcherView(customtkinter.CTkFrame):
+class AppView(customtkinter.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
 
@@ -14,7 +14,7 @@ class PatcherView(customtkinter.CTkFrame):
 
         title = customtkinter.CTkLabel(
             self,
-            text="Patchers",
+            text="Applications",
             font=customtkinter.CTkFont(size=20, weight="bold")
         )
         title.grid(row=0, column=0, pady=(20, 10))
@@ -32,11 +32,7 @@ class PatcherView(customtkinter.CTkFrame):
             pady=20
         )
 
-        for i in range(50):
-            patch_name = f"Patch {i + 1}"
-
-            self.button_grid.add_button(
-                text=patch_name,
-                command=lambda name=patch_name: p.patch(args={"name": name})
-            )
-
+        self.button_grid.add_button(
+            text="Everything",
+            command=lambda: app.launch()
+        )

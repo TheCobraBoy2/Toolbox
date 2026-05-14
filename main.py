@@ -3,7 +3,11 @@ from ctksidebar import CTkSidebarNavigation
 import pages
 
 def main():
+    customtkinter.set_appearance_mode("System")
+    customtkinter.ThemeManager.load_theme("themes/red.json")
+
     app = customtkinter.CTk()
+    app.title("Toolbox")
     app.geometry("640x480")
 
     nav = CTkSidebarNavigation(master=app, width=185)
@@ -23,6 +27,7 @@ def main():
 
     side.add_item(id="home", text="Dashboard")
     side.add_item(id="patcher", text="Patchers")
+    side.add_item(id="apps", text="Apps")
 
     home_view = pages.HomeView(nav.view("home"))
     home_view.pack(fill="both", expand=True)
@@ -30,10 +35,12 @@ def main():
     patcher_view = pages.PatcherView(nav.view("patcher"))
     patcher_view.pack(fill="both", expand=True)
 
+    app_view = pages.AppView(nav.view("apps"))
+    app_view.pack(fill="both", expand=True)
+
     nav.set("home")
 
     app.mainloop()
-
 
 if __name__ == '__main__':
     main()
