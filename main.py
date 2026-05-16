@@ -1,6 +1,9 @@
 import customtkinter
 from ctksidebar import CTkSidebarNavigation
 import pages
+import util
+from util import command_exists
+
 
 def main():
     customtkinter.set_appearance_mode("System")

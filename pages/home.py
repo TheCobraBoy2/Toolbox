@@ -1,4 +1,8 @@
 import customtkinter
+import patchers
+
+def install_patchers():
+    patchers.DiscordPatcher().install()
 
 class HomeView(customtkinter.CTkFrame):
     def __init__(self, master):
@@ -15,9 +19,8 @@ class HomeView(customtkinter.CTkFrame):
 
         button = customtkinter.CTkButton(
             self,
-            text="Click Me"
+            text="Preinstall All Patchers",
+            font=customtkinter.CTkFont(size=15, weight="bold"),
+            command=lambda : install_patchers()
         )
-        button.grid(row=1, column=0, pady=10)
-
-        textbox = customtkinter.CTkTextbox(self, width=300, height=150)
-        textbox.grid(row=2, column=0, padx=20, pady=20)
+        button.grid(row=1, column=0, pady=20)

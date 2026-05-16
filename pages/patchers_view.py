@@ -3,7 +3,8 @@ import customtkinter
 import patchers
 import generic
 
-p = patchers.TestPatcher()
+discord = patchers.DiscordPatcher()
+spotify = patchers.SpotifyPatcher()
 
 class PatcherView(customtkinter.CTkFrame):
     def __init__(self, master):
@@ -31,12 +32,11 @@ class PatcherView(customtkinter.CTkFrame):
             padx=20,
             pady=20
         )
-
-        for i in range(50):
-            patch_name = f"Patch {i + 1}"
-
-            self.button_grid.add_button(
-                text=patch_name,
-                command=lambda name=patch_name: p.patch(args={"name": name})
-            )
-
+        self.button_grid.add_button(
+            text="Discord",
+            command=lambda : discord.patch({})
+        )
+        self.button_grid.add_button(
+            text="Spotify",
+            command=lambda: spotify.patch({})
+        )
