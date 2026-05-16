@@ -13,7 +13,7 @@ class Downloadable:
 
     def _run_command_thread(self, cmd, windows=False):
         def target():
-            # I'm not sure if the linux works or not
+            # I don't think the linux works
             if windows:
                 if self.show_terminal:
                     subprocess.Popen(
@@ -37,9 +37,10 @@ class Downloadable:
             raise ValueError("No file name specified for Downloadable")
         return os.path.join(self.install_dir, self.name)
 
-    def install(self):
+    def install(self, quiet=False):
         if self.is_installed():
-            print(f"{self.name} already installed.")
+            if not quiet:
+                print(f"{self.name} already installed.")
             return
         if not self.command_based:
             os.makedirs(self.install_dir, exist_ok=True)
@@ -51,7 +52,8 @@ class Downloadable:
                 with open(self.get_final_path(), "wb") as f:
                     for chunk in response.iter_content(chunk_size=8192):
                         f.write(chunk)
-                print(f"{self.name} downloaded successfully.")
+                if not quiet:
+                    print(f"{self.name} downloaded successfully.")
             else:
                 print(f"Failed to download {self.name}: {response.status_code}")
         else:

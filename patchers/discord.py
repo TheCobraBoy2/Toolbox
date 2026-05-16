@@ -11,5 +11,5 @@ class patch(generic.Patcher, generic.Downloadable):
     name = "VencordInstaller.exe"
 
     def patch(self, args):
-        self.install()
+        self.install(quiet=True)
         subprocess.run([self.get_final_path()])

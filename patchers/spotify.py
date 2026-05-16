@@ -21,6 +21,6 @@ class patch(generic.Patcher, generic.Downloadable):
         self._run_command_thread(cmd, windows=(platform == util.Platforms.Windows))
 
     def patch(self, args):
-        self.install()
+        self.install(quiet=True)
         if self.is_installed():
             self.update()

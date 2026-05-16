@@ -22,7 +22,7 @@ class HomeView(customtkinter.CTkFrame):
 
         button = customtkinter.CTkButton(
             self,
-            text="Preinstall All Patchers",
+            text="Install All Patchers",
             font=customtkinter.CTkFont(size=15, weight="bold"),
             command=lambda : install_patchers()
         )
