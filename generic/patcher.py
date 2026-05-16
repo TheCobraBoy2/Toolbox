@@ -1,4 +1,5 @@
 class Patcher:
+    display_name = "Generic Patcher"
     def __init__(self):
         pass
 

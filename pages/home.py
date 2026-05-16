@@ -1,8 +1,11 @@
 import customtkinter
-import patchers
+from patchers import get_all_patchers
+from generic import Downloadable
 
 def install_patchers():
-    patchers.DiscordPatcher().install()
+    for patcher in get_all_patchers():
+        if isinstance(patcher, Downloadable):
+            patcher.install()
 
 class HomeView(customtkinter.CTkFrame):
     def __init__(self, master):

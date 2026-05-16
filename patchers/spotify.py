@@ -8,6 +8,7 @@ import subprocess
 import os
 
 class patch(generic.Patcher, generic.Downloadable):
+    display_name = "Spotify"
     name = "spicetify"
     install_commands = ["iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex", "curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh", "curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh"]
     command_based = True
