@@ -3,7 +3,8 @@ import customtkinter
 import applications
 import generic
 
-app = applications.TestApp()
+def run_app(app):
+    app.launch({})
 
 class AppView(customtkinter.CTkFrame):
     def __init__(self, master):
@@ -32,7 +33,11 @@ class AppView(customtkinter.CTkFrame):
             pady=20
         )
 
-        self.button_grid.add_button(
-            text="Everything",
-            command=lambda: app.launch()
-        )
+        for app in applications.get_all_apps():
+            def make_command(a):
+                return lambda: run_app(a)
+
+            self.button_grid.add_button(
+                text=app.display_name,
+                command=make_command(app),
+            )
