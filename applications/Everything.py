@@ -10,4 +10,5 @@ class Everything(generic.Application):
         util.launch_or_focus(
             app_name="Everything",
             title_contains="Everything",
+            maximize=False
         )

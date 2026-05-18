@@ -14,7 +14,7 @@ def is_running(process_name):
             pass
     return False
 
-def focus_windows(title_contains):
+def focus_windows(title_contains, maximize):
     try:
         import pygetwindow as gw
 
@@ -26,7 +26,8 @@ def focus_windows(title_contains):
                     win.restore()
 
                 win.activate()
-                win.maximize()
+                if maximize:
+                    win.maximize()
 
                 return True
     except Exception as e:
@@ -49,11 +50,11 @@ def focus_linux(title_contains):
     return False
 
 
-def launch_or_focus(app_name, title_contains):
+def launch_or_focus(app_name, title_contains, maximize=True):
     system = util.get_platform()
     focused = False
     if system == util.Platforms.Windows:
-        focused = focus_windows(title_contains)
+        focused = focus_windows(title_contains, maximize)
     elif system == util.Platforms.Linux:
         focused = focus_linux(title_contains)
     if not focused:
