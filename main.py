@@ -2,16 +2,17 @@ import customtkinter
 from ctksidebar import CTkSidebarNavigation, CTkSidebar
 import pages
 import util
-from util import command_exists
+sm = util.SettingsManager()
 
 def main():
+    sm.load()
     customtkinter.set_appearance_mode("System")
-    customtkinter.set_default_color_theme(util.get_theme_path())
+    customtkinter.set_default_color_theme(util.get_theme_path_str(sm.get("theme", "red")))
     current_page = "home"
 
     app = customtkinter.CTk()
     app.title("Toolbox")
-    app.geometry("640x480")
+    app.geometry(sm.get("window_size", "640x480"))
 
     nav : CTkSidebarNavigation | None = None
     side : CTkSidebar | None = None
@@ -24,8 +25,14 @@ def main():
         nav.destroy()
         build_app()
 
+    def on_close():
+        sm.set("window_size", app.geometry().split("+")[0])
+        app.destroy()
+    app.protocol("WM_DELETE_WINDOW", on_close)
+
     def switch_theme(theme_name):
-        customtkinter.set_default_color_theme(util.get_theme_path(util.Themes(theme_name)))
+        customtkinter.set_default_color_theme(util.get_theme_path_str(theme_name))
+        sm.set("theme", theme_name)
         rebuild_ui()
 
     def build_app():
@@ -63,14 +70,13 @@ def main():
         utilities_view = pages.UtilitiesView(nav.view("my_utils"))
         utilities_view.pack(fill="both", expand=True)
 
-        settings_view = pages.SettingsView(nav.view("settings"), switch_theme)
+        settings_view = pages.SettingsView(nav.view("settings"), switch_theme, app)
         settings_view.pack(fill="both", expand=True)
 
         nav.set(current_page)
 
     build_app()
     app.mainloop()
-
 
 if __name__ == "__main__":
     main()

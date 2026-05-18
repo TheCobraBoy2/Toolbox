@@ -14,3 +14,9 @@ def get_theme_path(theme = Themes.RED):
     if not os.path.exists(_theme_path(file_name)):
         raise FileNotFoundError(f"Theme {theme} not found expected path({_theme_path(file_name)})")
     return _theme_path(file_name)
+
+def get_theme_path_str(theme = Themes.RED.value):
+    file_name = f"{theme}.json"
+    if not os.path.exists(_theme_path(file_name)):
+        raise FileNotFoundError(f"Theme {theme} not found expected path({_theme_path(file_name)})")
+    return _theme_path(file_name)
