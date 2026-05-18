@@ -1,4 +1,5 @@
 import customtkinter
+from util import Themes
 
 class SettingsView(customtkinter.CTkFrame):
     def __init__(self, master, on_theme_change):
@@ -16,8 +17,8 @@ class SettingsView(customtkinter.CTkFrame):
 
         theme_selector = customtkinter.CTkOptionMenu(
             self,
-            values=["red", "breeze", "coffee", "metal"],
+            values=[theme.value for theme in Themes],
             command=self.on_theme_change,
         )
-
+        theme_selector.set(Themes.RED.value)
         theme_selector.grid(row=1, column=0, pady=(20, 10))

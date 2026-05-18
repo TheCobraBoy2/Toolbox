@@ -1,0 +1,4 @@
+appopener==1.7
+ctk_sidebar==0.2.4
+customtkinter==5.2.2
+Requests==2.34.2

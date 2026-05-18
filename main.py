@@ -4,10 +4,9 @@ import pages
 import util
 from util import command_exists
 
-
 def main():
     customtkinter.set_appearance_mode("System")
-    customtkinter.set_default_color_theme("themes/red.json")
+    customtkinter.set_default_color_theme(util.get_theme_path())
     current_page = "home"
 
     app = customtkinter.CTk()
@@ -26,7 +25,7 @@ def main():
         build_app()
 
     def switch_theme(theme_name):
-        customtkinter.set_default_color_theme(f"themes/{theme_name}.json")
+        customtkinter.set_default_color_theme(util.get_theme_path(util.Themes(theme_name)))
         rebuild_ui()
 
     def build_app():
