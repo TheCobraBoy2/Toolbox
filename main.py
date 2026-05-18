@@ -5,14 +5,13 @@ import util
 sm = util.SettingsManager()
 
 def main():
-    sm.load()
     customtkinter.set_appearance_mode("System")
-    customtkinter.set_default_color_theme(util.get_theme_path_str(sm.get("theme", "red")))
+    customtkinter.set_default_color_theme(util.get_theme_path_str(sm.get("theme")))
     current_page = "home"
 
     app = customtkinter.CTk()
     app.title("Toolbox")
-    app.geometry(sm.get("window_size", "640x480"))
+    app.geometry(sm.get("window_size"))
 
     nav : CTkSidebarNavigation | None = None
     side : CTkSidebar | None = None

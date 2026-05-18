@@ -1,6 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod, ABCMeta
 
-class Patcher(ABC):
+
+class Patcher(metaclass=ABCMeta):
     display_name = None
 
     def __init_subclass__(cls, **kwargs):

@@ -1,7 +1,7 @@
 from typing import Any
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
-class Application(ABC):
+class Application(metaclass=ABCMeta):
     def __init__(self):
         pass
 

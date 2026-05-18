@@ -2,8 +2,6 @@ import customtkinter
 from util import Themes, SettingsManager, default_config
 
 sm = SettingsManager()
-def p():
-    sm.set("window_size", default_config.get("window_size", "640x480"))
 
 class SettingsView(customtkinter.CTkFrame):
     def __init__(self, master, on_theme_change, app):
@@ -30,6 +28,6 @@ class SettingsView(customtkinter.CTkFrame):
         reset_size = customtkinter.CTkButton(
             self,
             text="Reset Window Size",
-            command=lambda : self.app.geometry(default_config.get("window_size", "640x480"))
+            command=lambda : self.app.geometry(default_config.get("window_size"))
         )
         reset_size.grid(row=2, column=0, pady=(20, 10))

@@ -63,6 +63,8 @@ class SettingsManager:
             json.dump(data, f, indent=4)
 
     def get(self, key, default=None):
+        if default is None:
+            default = default_config.get(key, None)
         return self.settings.get(key, default)
 
     def set(self, key, value):

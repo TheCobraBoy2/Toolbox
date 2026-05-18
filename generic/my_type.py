@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
+from abc import ABCMeta, abstractmethod
 
 # ha funny video
 #https://www.youtube.com/watch?v=mEM0CPeRvbk
 
-class MyType(ABC):
+class MyType(metaclass=ABCMeta):
     display_name = None
 
     def __init_subclass__(cls, **kwargs):
