@@ -4,7 +4,7 @@ import requests
 import subprocess
 import os
 
-class patch(generic.Patcher, generic.Downloadable):
+class Discord(generic.Patcher, generic.Downloadable):
     display_name = "Discord"
     install_dir = os.path.join(os.path.expanduser('~'), ".toolbox", "bin")
     url = "https://github.com/Vencord/Installer/releases/latest/download/VencordInstaller.exe"

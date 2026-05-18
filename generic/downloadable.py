@@ -11,6 +11,23 @@ class Downloadable:
     command_based = False
     show_terminal = True
 
+    def __init_subclass__(cls, **kwargs):
+        super().__init_subclass__(**kwargs)
+
+        # Always-required fields
+        always_required = ['name']
+        for attr in always_required:
+            if getattr(cls, attr, None) in (None, ''):
+                raise TypeError(f"Subclasses of [Downloadable] must define '{attr}'")
+
+        # Conditional requirements
+        if getattr(cls, 'command_based', False):
+            if getattr(cls, 'install_commands', None) in (None, []):
+                raise TypeError("Subclasses of [Downloadable] with command_based=True must define 'install_commands'")
+        else:
+            if getattr(cls, 'url', None) in (None, ''):
+                raise TypeError("Subclasses of [Downloadable] with command_based=False must define 'url'")
+
     def _run_command_thread(self, cmd, windows=False):
         def target():
             # I don't think the linux works

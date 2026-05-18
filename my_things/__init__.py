@@ -2,9 +2,9 @@ import pkgutil
 import importlib
 import inspect
 
-from generic import Patcher as CompType
+from generic import MyType as CompType
 
-def get_all_patchers():
+def get_all_things():
     patchers_list = []
 
     for _, module_name, _ in pkgutil.iter_modules(__path__):

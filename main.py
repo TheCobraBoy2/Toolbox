@@ -49,6 +49,7 @@ def main():
         side.add_item(id="home", text="Dashboard")
         side.add_item(id="patcher", text="Patchers")
         side.add_item(id="apps", text="Apps")
+        side.add_item(id="my_utils", text="My Utils")
         side.add_item(id="settings", text="Options")
 
         home_view = pages.HomeView(nav.view("home"))
@@ -59,6 +60,9 @@ def main():
 
         app_view = pages.AppView(nav.view("apps"))
         app_view.pack(fill="both", expand=True)
+
+        utilities_view = pages.UtilitiesView(nav.view("my_utils"))
+        utilities_view.pack(fill="both", expand=True)
 
         settings_view = pages.SettingsView(nav.view("settings"), switch_theme)
         settings_view.pack(fill="both", expand=True)

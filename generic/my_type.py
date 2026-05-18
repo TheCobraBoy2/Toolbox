@@ -1,6 +1,9 @@
 from abc import ABC, abstractmethod
 
-class Patcher(ABC):
+# ha funny video
+#https://www.youtube.com/watch?v=mEM0CPeRvbk
+
+class MyType(ABC):
     display_name = None
 
     def __init_subclass__(cls, **kwargs):
@@ -10,11 +13,11 @@ class Patcher(ABC):
         always_required = ['display_name']
         for attr in always_required:
             if getattr(cls, attr, None) in (None, ''):
-                raise TypeError(f"Subclasses of [Patcher] must define '{attr}'")
+                raise TypeError(f"Subclasses of [MyType] must define '{attr}'")
 
     def __init__(self):
         pass
 
     @abstractmethod
-    def patch(self, args):
+    def execute(self):
         pass

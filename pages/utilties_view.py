@@ -1,13 +1,12 @@
 import customtkinter
-
-from patchers import get_all_patchers
 import generic
 
+from my_things import get_all_things
 
-def run_patcher(patcher):
-    patcher.patch({})
+def run_thing(thing):
+    thing.execute()
 
-class PatcherView(customtkinter.CTkFrame):
+class UtilitiesView(customtkinter.CTkFrame):
     def __init__(self, master):
         super().__init__(master)
 
@@ -16,7 +15,7 @@ class PatcherView(customtkinter.CTkFrame):
 
         title = customtkinter.CTkLabel(
             self,
-            text="Patchers",
+            text="My Utilities",
             font=customtkinter.CTkFont(size=20, weight="bold")
         )
         title.grid(row=0, column=0, pady=(20, 10))
@@ -33,10 +32,11 @@ class PatcherView(customtkinter.CTkFrame):
             padx=20,
             pady=20
         )
-        for patcher in get_all_patchers():
-            def make_command(p):
-                return lambda: run_patcher(p)
+
+        for thing in get_all_things():
+            def make_command(t):
+                return lambda: run_thing(t)
             self.button_grid.add_button(
-                text=patcher.display_name,
-                command=make_command(patcher),
+                text=thing.display_name,
+                command=make_command(thing),
             )
