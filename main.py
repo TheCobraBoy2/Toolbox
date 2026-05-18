@@ -27,6 +27,7 @@ def main():
 
     def on_close():
         sm.set("window_size", app.geometry().split("+")[0])
+        sm.save()
         app.destroy()
     app.protocol("WM_DELETE_WINDOW", on_close)
 

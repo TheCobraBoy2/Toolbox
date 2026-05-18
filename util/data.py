@@ -67,4 +67,3 @@ class SettingsManager:
 
     def set(self, key, value):
         self.settings[key] = value
-        self.save()
