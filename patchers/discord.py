@@ -3,6 +3,7 @@ import generic
 import requests
 import subprocess
 import os
+import util
 
 class Discord(generic.Patcher, generic.Downloadable):
     display_name = "Discord"
