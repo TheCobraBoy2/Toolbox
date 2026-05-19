@@ -3,6 +3,7 @@ from multiprocessing import Process
 import customtkinter as ctk
 import ipaddress
 import math
+import my_things
 
 
 def calculate_ip_with_prefix(ip_with_prefix):

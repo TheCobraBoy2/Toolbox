@@ -4,6 +4,7 @@ import requests
 import subprocess
 import os
 import util
+import patchers
 
 class Discord(generic.Patcher, generic.Downloadable):
     display_name = "Discord"

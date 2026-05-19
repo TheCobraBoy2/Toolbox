@@ -6,8 +6,9 @@ import util
 import requests
 import subprocess
 import os
+import patchers
 
-class Discord(generic.Patcher, generic.Downloadable):
+class Spotify(generic.Patcher, generic.Downloadable):
     display_name = "Spotify"
     name = "spicetify"
     install_commands = ["iwr -useb https://raw.githubusercontent.com/spicetify/cli/main/install.ps1 | iex", "curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh", "curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh"]
