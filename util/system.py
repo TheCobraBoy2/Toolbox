@@ -1,5 +1,11 @@
+from __future__ import annotations
 import platform
 from enum import Enum
+
+import os
+import subprocess
+import sys
+from pathlib import Path
 
 
 class Platforms(Enum):
@@ -20,3 +26,13 @@ def get_platform():
 
 def print_platform():
     print(get_platform())
+
+def open_folder(path: str | Path) -> None:
+    p = Path(path).resolve()
+
+    if sys.platform.startswith("win"):
+        os.startfile(str(p))
+    elif sys.platform == "darwin":
+        subprocess.Popen(["open", str(p)])
+    else:
+        subprocess.Popen(["xdg-open", str(p)])

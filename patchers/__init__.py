@@ -4,6 +4,7 @@ import inspect
 import sys
 import os
 
+import dk
 from generic import Patcher as CompType
 
 from .discord import Discord
@@ -11,15 +12,7 @@ from .spotify import Spotify
 
 PLUGIN_DIR = os.path.join(os.path.expanduser("~"), ".toolbox", "mod", "patchers")
 
-class PluginAPI:
-    def __init__(self):
-        import generic
-        import util
-
-        self.generic = generic
-        self.util = util
-
-api = PluginAPI()
+api = dk.PluginAPI()
 def load_external_patchers():
     patchers = []
 

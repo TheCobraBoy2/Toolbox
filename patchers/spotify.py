@@ -19,7 +19,7 @@ class Spotify(generic.Patcher, generic.Downloadable):
             return
         platform = util.get_platform()
         cmd = f"{self.name} update"
-        self._run_command_thread(cmd, windows=(platform == util.Platforms.Windows))
+        self.run_command_thread(cmd, windows=(platform == util.Platforms.Windows))
 
     def patch(self, args):
         self.install(quiet=True)

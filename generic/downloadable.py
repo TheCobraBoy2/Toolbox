@@ -28,7 +28,7 @@ class Downloadable:
             if getattr(cls, 'url', None) in (None, ''):
                 raise TypeError("Subclasses of [Downloadable] with command_based=False must define 'url'")
 
-    def _run_command_thread(self, cmd, windows=False):
+    def run_command_thread(self, cmd, windows=False):
         def target():
             # I don't think the linux works
             if windows:

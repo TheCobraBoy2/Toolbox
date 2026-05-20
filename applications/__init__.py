@@ -3,6 +3,7 @@ import importlib
 import inspect
 import os
 
+import dk
 from generic import Application as CompType
 
 from .Discord import Discord
@@ -19,7 +20,7 @@ class PluginAPI:
         self.generic = generic
         self.util = util
 
-api = PluginAPI()
+api = dk.PluginAPI()
 def load_external_apps():
     patchers = []
 

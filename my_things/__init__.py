@@ -2,6 +2,7 @@ import pkgutil
 import importlib
 import inspect
 import os
+import dk
 
 from generic import MyType as CompType
 
@@ -9,15 +10,7 @@ from .subnet_calculator import SubnetCalculator
 
 PLUGIN_DIR = os.path.join(os.path.expanduser("~"), ".toolbox", "mod", "custom")
 
-class PluginAPI:
-    def __init__(self):
-        import generic
-        import util
-
-        self.generic = generic
-        self.util = util
-
-api = PluginAPI()
+api = dk.PluginAPI()
 def load_external_things():
     patchers = []
 
